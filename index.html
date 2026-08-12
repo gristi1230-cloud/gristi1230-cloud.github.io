@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Expense</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0d1117;
+            color: #f0f0f0;
+            padding-bottom: 90px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 24px 18px;
+        }
+
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .small-title {
+            color: #9da7b5;
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        .orange {
+            color: #f5a623;
+        }
+
+        .total-card {
+            background: linear-gradient(135deg, #1d2530, #151b23);
+            border: 1px solid #303946;
+            border-radius: 22px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .total-label {
+            color: #9da7b5;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .total {
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .cards {
+            display: grid;
+            gap: 14px;
+        }
+
+        .card {
+            background: #191f27;
+            border: 1px solid #303946;
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .icon {
+            font-size: 28px;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .amount {
+            font-size: 21px;
+            font-weight: bold;
+            color: #f5a623;
+        }
+
+        .description {
+            color: #8d98a8;
+            font-size: 13px;
+        }
+
+        .add-button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 17px;
+            border: none;
+            border-radius: 16px;
+            background: #f5a623;
+            color: #111;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .section-title {
+            margin-top: 30px;
+            margin-bottom: 14px;
+            font-size: 20px;
+        }
+
+        .expense {
+            background: #191f27;
+            border: 1px solid #303946;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 10px;
+        }
+
+        .expense-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .expense-category {
+            color: #f5a623;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .expense-name {
+            font-weight: bold;
+        }
+
+        .expense-date {
+            color: #8d98a8;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 75px;
+            background: #171d25;
+            border-top: 1px solid #303946;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-item {
+            text-align: center;
+            color: #8d98a8;
+            font-size: 12px;
+        }
+
+        .nav-icon {
+            font-size: 22px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .active {
+            color: #f5a623;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="small-title">FIELD EXPENSE TRACKER</div>
+        <h1>My <span class="orange">Expenses.</span></h1>
+    </div>
+
+    <div class="total-card">
+        <div class="total-label">TOTAL EXPENSE</div>
+        <div class="total">Rp 0</div>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-top">
+                <div>
+                    <div class="icon">🧾</div>
+                    <div class="card-title">EClaim</div>
+                </div>
+                <div class="amount">Rp 0</div>
+            </div>
+            <div class="description">
+                Field expenses for reimbursement
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-top">
+                <div>
+                    <div class="icon">🏗️</div>
+                    <div class="card-title">Biaya Angber</div>
+                </div>
+                <div class="amount">Rp 0</div>
+            </div>
+            <div class="description">
+                Angber and crane expenses
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-top">
+                <div>
+                    <div class="icon">👤</div>
+                    <div class="card-title">Pengeluaran Pribadi</div>
+                </div>
+                <div class="amount">Rp 0</div>
+            </div>
+            <div class="description">
+                Personal expenses during field
+            </div>
+        </div>
+
+    </div>
+
+    <button class="add-button">
+        ＋ ADD EXPENSE
+    </button>
+
+    <div class="section-title">
+        Recent Expenses
+    </div>
+
+    <div class="expense">
+        <div class="expense-row">
+            <div>
+                <div class="expense-category">ECLAIM</div>
+                <div class="expense-name">No expense yet</div>
+                <div class="expense-date">
+                    Your expenses will appear here
+                </div>
+            </div>
+            <div>—</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="bottom-nav">
+
+    <div class="nav-item active">
+        <span class="nav-icon">🏠</span>
+        Home
+    </div>
+
+    <div class="nav-item">
+        <span class="nav-icon">🧾</span>
+        EClaim
+    </div>
+
+    <div class="nav-item">
+        <span class="nav-icon">🏗️</span>
+        Angber
+    </div>
+
+    <div class="nav-item">
+        <span class="nav-icon">👤</span>
+        Personal
+    </div>
+
+</div>
+
+</body>
+</html>
