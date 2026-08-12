@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EClaim - My Expenses</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #0d1117;
+    color: #f0f0f0;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 25px 18px 40px;
+}
+
+.back {
+    color: #f5a623;
+    text-decoration: none;
+    font-size: 15px;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.small-title {
+    color: #9da7b5;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 0 0 25px;
+}
+
+.orange {
+    color: #f5a623;
+}
+
+.form-card {
+    background: #191f27;
+    border: 1px solid #303946;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+label.form-label {
+    display: block;
+    color: #c4ccd6;
+    font-size: 14px;
+    margin-bottom: 8px;
+    margin-top: 18px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 14px;
+    background: #0d1117;
+    color: #ffffff;
+    border: 1px solid #3a4554;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #f5a623;
+}
+
+.receipt-title {
+    color: #c4ccd6;
+    font-size: 14px;
+    margin-top: 22px;
+    margin-bottom: 8px;
+}
+
+.receipt-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.receipt-button {
+    background: #0d1117;
+    border: 1px solid #3a4554;
+    border-radius: 14px;
+    padding: 20px 10px;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 28px;
+}
+
+.receipt-button span {
+    display: block;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.receipt-button input {
+    display: none;
+}
+
+.receipt-button:active {
+    border-color: #f5a623;
+}
+
+.preview {
+    margin-top: 15px;
+    width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+    border-radius: 12px;
+    display: none;
+}
+
+.save-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 17px;
+    border: none;
+    border-radius: 15px;
+    background: #f5a623;
+    color: #111111;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.save-button:active {
+    transform: scale(0.98);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<a href="index.html" class="back">
+← Back to Dashboard
+</a>
+
+<div class="small-title">
+FIELD EXPENSE TRACKER
+</div>
+
+<h1>
+E<span class="orange">Claim.</span>
+</h1>
+
+<div class="form-card">
+
+<label class="form-label">Date</label>
+<input type="date" id="date">
+
+<label class="form-label">Well Name</label>
+<input type="text"
+       id="wellName"
+       placeholder="Example: SKW-23">
+
+<label class="form-label">Job Type</label>
+<input type="text"
+       id="jobType"
+       placeholder="Example: ESP Installation">
+
+<label class="form-label">Rig</label>
+<input type="text"
+       id="rig"
+       placeholder="Example: PDSI-01">
+
+<label class="form-label">Attendance</label>
+<input type="text"
+       id="attendance"
+       placeholder="Example: 2 Days">
+
+<label class="form-label">Amount</label>
+<input type="number"
+       id="amount"
+       placeholder="Example: 850000">
+
+<label class="form-label">Note</label>
+<textarea id="note"
+          placeholder="Enter your note..."></textarea>
+
+<div class="receipt-title">
+Receipt
+</div>
+
+<div class="receipt-options">
+
+<label class="receipt-button">
+
+📷
+
+<span>Take Photo</span>
+
+<input
+type="file"
+id="cameraReceipt"
+accept="image/*"
+capture="environment"
+onchange="previewReceipt(this)"
+>
+
+</label>
+
+
+<label class="receipt-button">
+
+🖼️
+
+<span>Gallery</span>
+
+<input
+type="file"
+id="galleryReceipt"
+accept="image/*"
+onchange="previewReceipt(this)"
+>
+
+</label>
+
+</div>
+
+<img
+id="preview"
+class="preview"
+>
+
+<button
+class="save-button"
+onclick="saveEclaim()">
+
+SAVE ECLAIM
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+function previewReceipt(input) {
+
+    const file = input.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    const preview =
+        document.getElementById("preview");
+
+    preview.src =
+        URL.createObjectURL(file);
+
+    preview.style.display =
+        "block";
+}
+
+
+function saveEclaim() {
+
+    const wellName =
+        document.getElementById("wellName").value;
+
+    const amount =
+        document.getElementById("amount").value;
+
+    if (!wellName || !amount) {
+
+        alert(
+            "Please fill Well Name and Amount."
+        );
+
+        return;
+    }
+
+    alert(
+        "EClaim form completed!"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
