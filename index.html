@@ -285,6 +285,16 @@
     </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+  const SUPABASE_URL = "https://flajndemwujpvoehgqzy.supabase.co/rest/v1/";
+  const SUPABASE_KEY = "sb_publishable_T2l-eNFTfkKrfCMwaWguTw_27aQelAN";
+
+  const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+</script>
 </body>
 </html>
